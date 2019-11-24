@@ -55,7 +55,7 @@
                     </table>
                 </div>
             </div>
-            <a id="add_row" class="btn btn-primary float-right" href="Cadastrar">Adicionar produto</a>
+            <a id="add_row" class="btn btn-primary float-right" href="InserirProduto?id=${}">Adicionar produto</a>
         </div>
 
     </body>
