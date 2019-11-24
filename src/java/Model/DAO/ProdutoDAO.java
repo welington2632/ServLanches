@@ -29,7 +29,7 @@ public class ProdutoDAO {
         con.close();
     }
     
-    public static List<Produto> listarProduto() throws ClassNotFoundException, SQLException{
+    public static ArrayList<Produto> listarProduto() throws ClassNotFoundException, SQLException{
          Connection con = ConnectionFactory.getConexao();
         PreparedStatement comand = con.prepareStatement("select * from produto");
         

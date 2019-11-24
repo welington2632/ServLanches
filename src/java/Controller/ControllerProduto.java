@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet(name = "ControllerProduto", urlPatterns = {"/ListarProduto"})
+@WebServlet(name = "ControllerProduto", urlPatterns = {"/ListarProduto","/CadastrarProduto"})
 public class ControllerProduto extends HttpServlet {
 
     @Override
@@ -31,6 +31,8 @@ public class ControllerProduto extends HttpServlet {
          String uri = request.getRequestURI();
         if (uri.equals(request.getContextPath() + "/ListarProduto")) {
             ListarProduto(request, response);
+        } else if (uri.equals(request.getContextPath() + "/CadastrarProduto")) {
+            CadastrarProduto(request, response);
         }
     }
 
@@ -40,6 +42,8 @@ public class ControllerProduto extends HttpServlet {
     }
     
     public void ListarProduto(HttpServletRequest request, HttpServletResponse response){
+        
+        
         try {
             Produto produto = new Produto();
             produto.setIdProduto(1);
@@ -58,6 +62,17 @@ public class ControllerProduto extends HttpServlet {
             String jsonProduto = JsonFactory.getJson(pedido);
             request.setAttribute("mensagem", jsonProduto);
                 request.getRequestDispatcher("/resposta.jsp").forward(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(ControllerProduto.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
+    public void CadastrarProduto(HttpServletRequest request, HttpServletResponse response){
+      try {
+            ArrayList<Produto> produtos = ProdutoDAO.listarProduto();
+            request.setAttribute("produtos", produtos);
+            request.getRequestDispatcher("/cadastroProduto.jsp").forward(request, response);
         } catch (Exception ex) {
             Logger.getLogger(ControllerProduto.class.getName()).log(Level.SEVERE, null, ex);
         }
