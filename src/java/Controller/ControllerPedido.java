@@ -52,7 +52,7 @@ public class ControllerPedido extends HttpServlet {
         try {
                 Pedido pedido = (Pedido) request.getAttribute("pedidoAtivo");
                 Item itemAdicionar = new Item();
-                itemAdicionar.setProduto(ProdutoDAO.consultarProduto(Integer.parseInt(request.getParameter("id"))));
+                itemAdicionar.setProduto(ProdutoDAO.consultarProduto(Integer.parseInt(request.getParameter("produto"))));
                 itemAdicionar.setQuantidade(Integer.parseInt(request.getParameter("quantidade")));
                 boolean insereNovoItem = true;
                 
