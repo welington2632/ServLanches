@@ -6,6 +6,7 @@
 package Model.Entity;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,7 +18,7 @@ public class Pedido {
     private int idpedido;
     private int mesa;
     private Date data;
-    private List<Item> itens;
+    private ArrayList<Item> itens = new ArrayList<Item>();
     private double valorPedido;
 
     public int getIdpedido() {
@@ -44,11 +45,11 @@ public class Pedido {
         this.data = data;
     }
 
-    public List<Item> getItens() {
+    public ArrayList<Item> getItens() {
         return itens;
     }
 
-    public void setItens(List<Item> itens) {
+    public void setItens(ArrayList<Item> itens) {
         this.itens = itens;
     }
 
